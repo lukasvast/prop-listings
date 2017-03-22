@@ -1,0 +1,15 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand">Listings</a>
+    </div>
+    <ul class="nav navbar-nav navbar-left">
+      <li><a [routerLink]="['/']">Home</a></li>
+      <li *ngIf="(af.auth | async)"><a [routerLink]="['/listings']">Listings</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li *ngIf="!(af.auth | async)"><a (click)="login()" [routerLink]="['/']">Login</a></li>
+      <li *ngIf="(af.auth | async)"><a (click)="logout()" [routerLink]="['/']">Logout</a></li>
+    </ul>
+  </div>
+</nav>

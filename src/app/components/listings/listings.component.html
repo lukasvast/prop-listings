@@ -1,0 +1,30 @@
+<div *ngIf="(currentUser)" class="jumbotron text-center">
+  <div class="media">
+    <div class="media-left">
+      <img src="{{currentUser.photoURL}}" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h2 class="media-heading">{{currentUser.displayName}}</h2>
+      <h3>Welcome back, how are you today?</h3>
+    </div>
+    <div class="media-bottom text-left">
+    <br>
+      <p>email: {{currentUser.email}}</p>
+      <p>uid: {{currentUser.uid}}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="(currentUser)" class="container">
+  <app-addlisting></app-addlisting>
+</div>
+
+<div *ngFor="let entry of listings" class="row">
+  <div class="alert col-sm-6">
+    <h3 class="text-right">User: {{entry.username}}</h3>
+    <h5>Message:</h5>
+    <div class="well well-lg text-primary"><h4>{{entry.message}}</h4></div>
+    <h5 class="text-left">Likes: {{entry.numOfLikes}}</h5>
+    <p class="text-right">{{entry.$key}}</p>
+  </div>
+</div>
