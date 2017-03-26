@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
 
 import { FirebaseService } from './services/firebase.service';
@@ -10,8 +11,9 @@ import { FirebaseService } from './services/firebase.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { ListingsComponent } from './components/listings/listings.component';
-import { AddlistingComponent } from './components/addlisting/addlisting.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { FeedComponent } from './components/feed/feed.component';
+
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBRfuzOq3TWpUwFK7xZTAbmK99gPNDX5zE",
@@ -28,16 +30,17 @@ const firebaseAuthConfig = {
 
 const appRoutes:Routes=[
   {path:"", component:HomeComponent},
-  {path:"listings", component:ListingsComponent}
+  {path:"profile", component:ProfileComponent},
+  {path:"feed", component:FeedComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ListingsComponent,
     NavbarComponent,
-    AddlistingComponent
+    ProfileComponent,
+    FeedComponent
   ],
   imports: [
     BrowserModule,

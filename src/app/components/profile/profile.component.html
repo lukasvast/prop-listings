@@ -1,0 +1,18 @@
+<div *ngIf="(currentUser)" class="jumbotron text-center">
+  <div class="media">
+    <div class="media-left">
+      <img src="{{currentUser.photoURL}}" class="media-object" style="width:60px">
+    </div>
+    <div class="media-body">
+      <h2 class="media-heading">{{currentUser.displayName}}</h2>
+    </div>
+    <div class="media-bottom text-left">
+    <br>
+      <p>email: {{currentUser.email}}</p>
+      <p>uid: {{currentUser.uid}}</p>
+    </div>
+  </div>
+  <pre>
+    TODO: User profile management.
+  </pre>
+</div>

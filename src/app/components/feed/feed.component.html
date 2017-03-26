@@ -1,0 +1,32 @@
+<form (submit)="onSubmitAdd()" class="alert">
+  <div class="form-group">
+    <textarea [(ngModel)]="message" type="text" name="message" class="form-control input-lg" required></textarea>
+    <label class="btn btn-primary btn-file">
+      Add Photo <input type="file" style="display: none;" accept="image/*" id="postImage">
+    </label>
+    <button type="submit" class="btn btn-default">Post</button>
+  </div>
+</form>
+
+<div *ngIf="(message)" class="alert alert-success">
+  <h3 class="text-right">User: {{currentUser.displayName}}</h3>
+  <h5>Message:</h5>
+  <div class="well well-lg text-primary"><h4>{{message}}</h4></div>
+</div>
+
+<div *ngFor="let post of posts" class="row">
+  <div class="alert">
+    <h3 class="text-right"><img src="{{post.photoURL}}" style="width:40px;"/>{{post.username}}</h3>
+    <div class="well well-lg text-primary"><h4>{{post.message}}</h4></div>
+    <h5 class="text-left">Likes: {{post.numOfLikes}}</h5>
+    <div *ngIf="((currentTimeMs--post.createdAtMs)/60000)>=1 && ((currentTimeMs--post.createdAtMs)/60000)<60">
+      <h5 class="text-right">{{(currentTimeMs--post.createdAtMs)/60000 | number : '1.0-0'}} minutes ago</h5>
+    </div>
+    <div *ngIf="((currentTimeMs--post.createdAtMs)/3600000)>=1">
+      <h5 class="text-right">{{(currentTimeMs--post.createdAtMs)/3600000 | number : '1.0-0'}} hours ago</h5>
+    </div>
+    <div *ngIf="(currentUser.displayName==post.username)">
+      <button (click)="onClickDelete(post.$key)" class="btn btn-danger">DELETE POST</button>
+    </div>
+  </div>
+</div>
